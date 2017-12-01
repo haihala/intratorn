@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Galilei/IAction/TestAction")]
+[CreateAssetMenu(menuName = "Galilei/IAction/Pickup")]
 public class PickupAction : InteractableAction {
     public Item Pickup;
 
