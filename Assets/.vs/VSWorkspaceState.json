@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Editor",
+    "\\Scripts",
+    "\\Scripts\\Core",
+    "\\Scripts\\Core\\PlayerParts",
+    "\\Scripts\\DataClass",
+    "\\Scripts\\DataClass\\Variable",
+    "\\Scripts\\EventSystem"
+  ],
+  "SelectedNode": "\\Editor\\DataClassEditor.cs",
+  "PreviewInSolutionExplorer": false
+}
