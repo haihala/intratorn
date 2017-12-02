@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 
-public class Interactable : MonoBehaviour {
-    public InteractableAction Action;
-    public GameObject HighlightPrefab;
+public abstract class Interactable : MonoBehaviour {
+    private GameObject HighlightPrefab;
     private GameObject HighlightObject;
+
+    private void Start() {
+        HighlightPrefab = PrefabManager.GetPrefab("Highlight");
+    }
 
     public Vector3 Position () {
         return transform.position;
     }
 
-    public void Interact (Player player) {
-        Action.OnInteract(gameObject, player);
-    }
+    public virtual void Interact(Player Plr) { }
 
     public void Highlight() {
         if (HighlightObject == null) {
