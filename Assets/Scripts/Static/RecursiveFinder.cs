@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RecursiveFinder {
+public static class RecursiveFinder {
     public static T FromParent<T>(GameObject Target) {
         Transform par = Target.transform.parent;
         if (par == null) {
