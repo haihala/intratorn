@@ -1,12 +1,19 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAt : MonoBehaviour {
-	// Update is called once per frame
-	void Update () {
-        Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle-90, Vector3.forward);
+public class LookAt : MonoBehaviour
+{
+    void Update()
+    {
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float hitdist = 0.0f;
+        if (playerPlane.Raycast(ray, out hitdist))
+        {
+            Vector3 targetPoint = ray.GetPoint(hitdist);
+            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+            transform.rotation = targetRotation;
+        }
     }
 }
+

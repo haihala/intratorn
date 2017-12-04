@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class PrefabManager {
     public static GameObject GetPrefab(string Name) {
-        return (GameObject)Resources.Load("prefabs/" + Name, typeof(GameObject));
+        return (GameObject)Resources.Load("Prefabs/" + Name, typeof(GameObject));
     }
 }

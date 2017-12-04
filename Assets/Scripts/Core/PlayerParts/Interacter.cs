@@ -7,9 +7,12 @@ public class Interacter : MonoBehaviour {
     private Vector3 Position;
     private Interactable Target;
     private Player Plr;
+    private GameObject HighlightPrefab;
+    private GameObject HighlightObject;
 
     private void Start() {
         Plr = GetComponent<Player>();
+        HighlightPrefab = PrefabManager.GetPrefab("Highlight");
     }
 
     // Update is called once per frame
@@ -27,14 +30,12 @@ public class Interacter : MonoBehaviour {
                     NewTarget = i;
                 }
             }
-            if (NewTarget) {
-                if (Target != NewTarget) {
-                    if (Target) {
-                        Target.DeHighlight();
-                    }
-                    Target = NewTarget;
-                    Target.Highlight();
-                }
+
+            Target = NewTarget;
+            
+            if (Target)
+            {
+                Retarget();
             }
         }
 
@@ -43,22 +44,46 @@ public class Interacter : MonoBehaviour {
         }
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        Interactable interactable = RecursiveFinder.FromParent<Interactable>(collision.gameObject);
+    private void Retarget()
+    {
+        if (!HighlightObject)
+        {
+            HighlightObject = Instantiate(HighlightPrefab);
+        }
 
+        var combinedBounds = new Bounds();
+        var renderers = Target.GetComponentsInChildren<Renderer>();
+        foreach (Renderer render in renderers)
+        {
+            combinedBounds.Encapsulate(render.bounds);
+        }
+        HighlightObject.transform.position = new Vector3( Target.gameObject.transform.position.x, combinedBounds.max.y + 0.1f, Target.gameObject.transform.position.z);
+
+    }
+
+    private void Untarget()
+    {
+        if (HighlightObject)
+        {
+            Destroy(HighlightObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision) {
+        Interactable interactable = RecursiveFinder.FromParent<Interactable>(collision.gameObject);
         if (interactable) {
             // We found something we can interact with
             Interactables.Add(interactable);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) {
+    private void OnTriggerExit(Collider collision) {
         Interactable interactable = RecursiveFinder.FromParent<Interactable>(collision.gameObject);
         if (interactable) {
             // We found something we can interact with
             Interactables.Remove(interactable);
             if (interactable == Target) {
-                Target.DeHighlight();
+                Untarget();
                 Target = null;
             }
         }
