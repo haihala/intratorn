@@ -4,7 +4,12 @@ public static class RecursiveFinder {
     public static T FromParent<T>(GameObject Target) {
         Transform par = Target.transform.parent;
         if (par == null) {
-            return default(T);
+            T Comp = Target.GetComponent<T>();
+            if (Comp != null) {
+                return Comp;
+            } else {
+                return default(T);
+            }
         }
 
         T Trial = Target.transform.parent.GetComponent<T>();

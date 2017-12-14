@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Room : MonoBehaviour {
     // Script is added to floors that represent rooms. Walls will be generated.
-    public GameObject WallPrefab;
+    private GameObject WallPrefab;
+    private GameObject DoorPrefab;
 
     void Start () {
+        // Get prefabs
+        WallPrefab = PrefabManager.GetPrefab("Wall");
+        DoorPrefab = PrefabManager.GetPrefab("Door");
+
         // We need to add the walls. 
         // Every room is a square, so there are two walls to add.
         float height_offset = WallPrefab.GetComponent<MeshFilter>().sharedMesh.bounds.size.y/2f;
@@ -27,6 +32,9 @@ public class Room : MonoBehaviour {
         // Move
         left_wall.transform.Translate(new Vector3(-left_offset, height_offset, 0), Space.World);
         right_wall.transform.Translate(new Vector3(0, height_offset, -right_offset), Space.World);
+    }
+
+    void Hole(bool door) {
 
     }
 }
