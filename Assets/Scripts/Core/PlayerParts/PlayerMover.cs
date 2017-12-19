@@ -11,11 +11,12 @@ public class PlayerMover : MonoBehaviour {
     }
 
 
-    void Update () {
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime;
-        var y = Input.GetAxis("Vertical") * Time.deltaTime;
+    void FixedUpdate() {
+        var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        moveDirection = Camera.main.transform.TransformDirection(moveDirection);
+        moveDirection.y = 0;
 
-        Vector3 Dir = new Vector3(y+x, 0, y-x);
-        rb.velocity = Dir.normalized * Speed.Value;
+
+        rb.MovePosition(rb.position + moveDirection * Speed.Value * Time.deltaTime);
     }
 }
