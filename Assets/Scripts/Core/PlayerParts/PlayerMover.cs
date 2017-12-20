@@ -15,6 +15,7 @@ public class PlayerMover : MonoBehaviour {
         var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical") * Mathf.Sqrt(2));
         moveDirection = Camera.main.transform.TransformDirection(moveDirection);
         moveDirection.y = 0;
+        moveDirection.Normalize();
 
         rb.MovePosition(rb.position + moveDirection * Speed.Value * Time.deltaTime);
     }
