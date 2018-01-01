@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour {
 
     public Inventory target;
     public Transform items;
-    public GameObject hilight;
+    public TextMeshProUGUI hilight;
     public GameObject itemPrefab;
 
     public void Open_tab(string Tab){
@@ -25,7 +26,7 @@ public class InventoryUI : MonoBehaviour {
     }
 
     public void Inspect(Item to_inspect){
-        print("inspecting " + to_inspect.Name);
+        hilight.text = to_inspect.Inspect();
     }
 
     #region Privates

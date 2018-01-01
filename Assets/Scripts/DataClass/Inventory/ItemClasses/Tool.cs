@@ -6,6 +6,8 @@ using UnityEngine;
 public class Tool : Item {
     public List<UseCase> UseCases;
 
+    public string Use_case_hint;
+
     public void Use () {
 
     }
