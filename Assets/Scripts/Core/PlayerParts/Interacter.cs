@@ -12,7 +12,7 @@ public class Interacter : MonoBehaviour {
 
     private void Start() {
         Plr = GetComponent<Player>();
-        HighlightPrefab = PrefabManager.GetPrefab("Highlight");
+        HighlightPrefab = PrefabManager.GetPrefab("UI/Highlight");
     }
 
     // Update is called once per frame
