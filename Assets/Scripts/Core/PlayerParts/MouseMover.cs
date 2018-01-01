@@ -24,6 +24,11 @@ public class MouseMover : MonoBehaviour {
 			}
         }
 
+		if (Input.GetButton("Stop")) {
+			print("Stopped");
+			target = default(Vector3);
+		}
+
 		if (target != default(Vector3)) {
 			Vector3 move_direction = (target - transform.position);
 			move_direction.y = 0;
