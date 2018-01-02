@@ -1,23 +1,18 @@
 fileFormatVersion: 2
-guid: 26d19f2b554ac8548a971c37f80c9230
-timeCreated: 1513410076
+guid: 1926c9205d030d24581b1e3ed9fd9ba1
+timeCreated: 1514933501
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Empty
-    100004: Hull
     400000: //RootNode
-    400002: Empty
-    400004: Hull
+    2100000: Base
+    2100002: Walls
     2300000: //RootNode
-    2300002: Hull
     3300000: //RootNode
-    3300002: Hull
     4300000: Hull
     6400000: //RootNode
-    6400002: Hull
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -25,22 +20,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Base
-    second: {fileID: 2100000, guid: 6b0c1c5026324f64c8b742048e9af744, type: 2}
+    second: {fileID: 2100000, guid: 2bee1332b16a71b42a80879f534e70b7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Walls
-    second: {fileID: 2100000, guid: 93a5beb9761060541ade6a427728c334, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: unnamed
-    second: {fileID: 2100000, guid: e3172210c6843734bad958ad37bda8dc, type: 2}
+    second: {fileID: 2100000, guid: 107e2740a91a3c443ba40b2d811c24f3, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -70,14 +60,16 @@ ModelImporter:
     addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -85,7 +77,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
