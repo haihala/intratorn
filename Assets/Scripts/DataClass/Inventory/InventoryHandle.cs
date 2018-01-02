@@ -4,19 +4,44 @@ public class InventoryHandle : MonoBehaviour {
 
     public Inventory inventory;
     public GameObject inventoryUIPrefab;
-    private GameObject inventoryUI;
+    public IntVariable UIOpen;
+    GameObject inventoryUI;
+    Transform canvas;
 
+    void Start() {
+        canvas = GameObject.Find("Canvas").transform;
+    }
 
-    public void Open() {
-        if (!inventoryUI) {
-            inventoryUI = Instantiate(inventoryUIPrefab);
-            inventoryUI.GetComponent<InventoryUI>().target = inventory;
+    void Update() {
+        if (Input.GetButtonDown("Inventory")) {
+            if (inventoryUI) {
+                // If UI is open, close it and vice versa
+                Close();
+            } else {
+                Open();
+            }
+        }
+
+        // ESC closes inventory if open.
+        if (Input.GetButtonDown("Cancel")) {
+            if (inventoryUI) {
+                Close();
+            }
         }
     }
 
-    public void Close() {
+    void Open() {
+        if (!inventoryUI) {
+            inventoryUI = Instantiate(inventoryUIPrefab, canvas);
+            inventoryUI.GetComponent<InventoryUI>().target = inventory;
+            UIOpen.Value++;
+        }
+    }
+
+    void Close() {
         if (inventoryUI) {
             Destroy(inventoryUI);
+            UIOpen.Value--;
         }
     }
 }

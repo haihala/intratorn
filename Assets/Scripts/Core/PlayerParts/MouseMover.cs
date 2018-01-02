@@ -6,6 +6,7 @@ public class MouseMover : MonoBehaviour {
 
     public FloatVariable speed;
 	public FloatVariable dead_zone;
+	public IntVariable UIOpen;
     Rigidbody rb;
 	Plane groundPlane;
 	Vector3 target;
@@ -16,19 +17,19 @@ public class MouseMover : MonoBehaviour {
 	}
 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float distance;
-            if (groundPlane.Raycast(ray, out distance)) {
-				target = ray.GetPoint(distance);
+        if (UIOpen.Value == 0) {  // UIOpen is used to see if input for certain things should be captured.
+			if (Input.GetMouseButtonDown(0)) {
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				float distance;
+				if (groundPlane.Raycast(ray, out distance)) {
+					target = ray.GetPoint(distance);
+				}
 			}
-        }
 
-		if (Input.GetButton("Stop")) {
-			print("Stopped");
-			target = default(Vector3);
+			if (Input.GetButton("Stop")) {
+				target = default(Vector3);
+			}
 		}
-
 		if (target != default(Vector3)) {
 			Vector3 move_direction = (target - transform.position);
 			move_direction.y = 0;
@@ -39,5 +40,4 @@ public class MouseMover : MonoBehaviour {
 			}
 		}
     }
-
 }
