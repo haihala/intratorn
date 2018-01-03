@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
 
 public class InventoryUI : MonoBehaviour {
 
     public Inventory target;
     public Transform items;
+    public Transform effects;
     public TextMeshProUGUI hilight;
     public GameObject itemPrefab;
+    public GameObject effectPrefab;
 
     public void Open_tab(string Tab){
         Clear_items();
@@ -54,5 +57,9 @@ public class InventoryUI : MonoBehaviour {
         return ret;
     }
     
+    void Add_effect (Effect effect) {
+
+    }
+
     #endregion Privates
 }

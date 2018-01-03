@@ -34,6 +34,7 @@ public class InventoryHandle : MonoBehaviour {
         if (!inventoryUI) {
             inventoryUI = Instantiate(inventoryUIPrefab, canvas);
             inventoryUI.GetComponent<InventoryUI>().target = inventory;
+            inventoryUI.GetComponent<InventoryUI>().Open_tab("ALL");
             UIOpen.Value++;
         }
     }
