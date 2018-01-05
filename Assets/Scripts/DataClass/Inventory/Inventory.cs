@@ -6,6 +6,10 @@ using UnityEngine;
 public class Inventory : ScriptableObject {
     public List<Item> Content;
 
+    public Item primary;
+    public Item armor;
+    
+
     public float Weight() {
         float sum = 0;
         foreach (Item i in Content) {

@@ -6,7 +6,8 @@ public class InventoryItem : MonoBehaviour {
 	public TextMeshProUGUI Name;
 	public TextMeshProUGUI Weight;
 	private InventoryUI master;
-	private Item item;
+	[HideInInspector]
+	public Item item;
 
     public void Set_values(Item item, InventoryUI master){
 		Name.text = item.Name;
@@ -18,6 +19,14 @@ public class InventoryItem : MonoBehaviour {
 		this.master = master;
 		this.item = item;
     }
+
+	public void On_hover () {
+		master.Select(this.item);
+	}
+
+	public void Off_hover () {
+		master.Deselect();
+	}
 
 	void Inspect(){
 		master.Inspect(item);

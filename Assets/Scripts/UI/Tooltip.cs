@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class EffectElement : MonoBehaviour {
+[RequireComponent(typeof(EventTrigger))]
+public class Tooltip : MonoBehaviour {
 	public string tooltip;
 
 	GameObject tooltip_obj;
@@ -12,7 +14,6 @@ public class EffectElement : MonoBehaviour {
 		tooltip_prefab = PrefabManager.GetPrefab("UI/Inventory/Tooltip");
 		canvas = GameObject.Find("Canvas").transform;
 	}
-
 
 	public void Open_tooltip() {
 		if (!tooltip_obj) {
